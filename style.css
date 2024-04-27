@@ -1,7 +1,10 @@
 body {
     background-color: rgb(66, 66, 66);
+    display: flex;
 }
 
-.square {
-    color: aliceblue;
+#container {
+    color: rgb(242, 244, 247);
+    display: flex;
+
 };
