@@ -1,17 +1,30 @@
+// CONTAINER FOR SQUARES
 
-const container = document.getElementById("container")
+const page = document.querySelector("body");
+const cont = document.createElement("div");
+cont.classList.add("container");
+page.appendChild(cont);
 
 // FUNCTIONS
 
-function createContainer() {
-let square = document.createElement("div");
-square.setAttribute("class", "square");
-square.textContent = "*";
-container.appendChild(square);
-};
+function createSquares() {
+    for (let i=1; i<=256; i++) {
+        let square = document.createElement("div");
+        square.setAttribute("id", `${i}`);
+        square.setAttribute("class", "square");
+        square.textContent = "";
 
-function multiplyContainer() {
-    for (let i=0; i<9; i++) {
-        createContainer();
+        cont.appendChild(square);
     };
 };
+
+createSquares();
+
+// HOVER SCRIPT
+
+const units = document.querySelectorAll(".square");
+units.forEach((div) => {
+    div.addEventListener("mouseover", () => {
+        div.classList.add("active");
+    });
+});
