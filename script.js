@@ -5,10 +5,12 @@ const cont = document.createElement("div");
 cont.classList.add("container");
 page.appendChild(cont);
 
+let input = 16;
+
 // FUNCTIONS
 
 function createSquares() {
-    for (let i=1; i<=256; i++) {
+    for (let i=1; i<=(input*input); i++) {
         let square = document.createElement("div");
         square.setAttribute("id", `${i}`);
         square.setAttribute("class", "square");
@@ -17,14 +19,36 @@ function createSquares() {
         cont.appendChild(square);
     };
 };
-
 createSquares();
 
 // HOVER SCRIPT
 
-const units = document.querySelectorAll(".square");
-units.forEach((div) => {
-    div.addEventListener("mouseover", () => {
+function hover() {
+    const units = document.querySelectorAll(".square");
+    let sqrs = units;
+    sqrs.forEach((div) => {
+        div.addEventListener("mouseover", () => {
         div.classList.add("active");
+        });
     });
+};
+hover();
+
+//BUTTON SCRIPT
+
+const button = document.querySelector(".button");
+button.addEventListener("click", () => {
+    const units = document.querySelectorAll(".square");
+    let k = prompt('Set the number of squares per side (16-100)');
+    if (k > 0) {
+        input -= input;
+        input += Number(k);
+        units.forEach((div) => {
+            cont.removeChild(div);
+        });
+    createSquares();
+    hover();
+    cont.style.width = `${(input*10)}px`;
+    cont.style.height = `${(input*10)}px`;
+    };
 });
