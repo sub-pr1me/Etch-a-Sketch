@@ -7,7 +7,7 @@ page.appendChild(cont);
 
 let input = 16;
 
-// FUNCTIONS
+// CREATE SQUARES FUNCTION
 
 function createSquares() {
     for (let i=1; i<=(input*input); i++) {
@@ -28,7 +28,7 @@ function hover() {
     let sqrs = units;
     sqrs.forEach((div) => {
         div.addEventListener("mouseover", () => {
-        div.classList.add("active");
+        div.style.backgroundColor = getRandomColor();
         });
     });
 };
@@ -54,3 +54,14 @@ button.addEventListener("click", () => {
         alert('The number is out of the specified range! Please enter a number between 16 and 100!')
     };
 });
+
+//RANDOM COLOR FUNCTION
+
+function getRandomColor() {
+    let letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  };
